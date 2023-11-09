@@ -7,8 +7,8 @@ LABEL maintainer="Brian Kim <brian.kim@stat.ubc.ca>"
 
 # install rise slides extension, nbgrader, clean cache
 RUN mamba install --quiet --yes \
-    'rise' \
-    'nbgrader=0.8.2' && \
+    'jupyterlab_rise=0.3.0' \
+    'nbgrader=0.8.4' && \
     mamba clean --all -f -y
 
 # re-upgrade jupyter-server (mamba downgrades it)
