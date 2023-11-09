@@ -39,7 +39,7 @@ RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
   Rscript -e "install.packages('moderndive', repos='http://cran.us.r-project.org')"
 
 # Install pexpect from main branch to fix asyncio issue with jupyterlab_git
-RUN pip install git+https://github.com/pexpect/pexpect.git@master
+RUN pip install --ignore-installed git+https://github.com/pexpect/pexpect.git@master
 
 # Disable the cell toolbar (which ignores metadata and students often accidentally click + delete grading cells)
 RUN jupyter labextension disable @jupyterlab/cell-toolbar-extension
