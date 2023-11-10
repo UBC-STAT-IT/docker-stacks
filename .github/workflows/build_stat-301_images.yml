@@ -2,7 +2,7 @@ name: Build and publish STAT 301 images
 on: workflow_dispatch
         
 jobs:
-    checkout-tag:
+    build-publish:
         runs-on: ubuntu-latest
         
         steps:
