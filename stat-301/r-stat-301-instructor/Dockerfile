@@ -2,7 +2,7 @@
 # Distributed under the terms of the Modified BSD License.
 
 # TODO: For testing purposes only, change back to ubcdsci/r-stat-301:latest
-FROM brianki/r-stat-301-student-test:latest
+FROM ubstatit/r-stat-301-student:latest
 
 LABEL maintainer="Brian Kim <brian.kim@stat.ubc.ca>"
 
