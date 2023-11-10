@@ -1,7 +1,7 @@
 # Copyright (c) UBC-STAT Development Team.
 # Distributed under the terms of the Modified BSD License.
 # TODO: For testing purposes only, change to ubcstat/r-stat-201:latest
-FROM brianki/r-stat-201-student-test:09112023
+FROM brianki/r-stat-201-student-test:latest
 
 LABEL maintainer="Brian Kim <brian.kim@stat.ubc.ca>"
 

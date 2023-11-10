@@ -1,11 +1,9 @@
-name: Build and publish STAT 301 docker images on DockerHub
+name: Build and publish STAT 301 images
 on: workflow_dispatch
         
 jobs:
-    build-publish:
+    checkout-tag:
         runs-on: ubuntu-latest
-        permissions:
-            contents: write
         
         steps:
         - name: Checkout main
