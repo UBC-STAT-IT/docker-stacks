@@ -5,6 +5,7 @@ channels:
  - nodefaults
 dependencies:
   - anyio=3.7.1
+  - jupyterlab=3.6.6
   - jupyterlab-git
   - jupytext
   - nbgitpuller
