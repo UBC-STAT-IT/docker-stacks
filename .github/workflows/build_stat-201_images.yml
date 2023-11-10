@@ -1,12 +1,12 @@
 name: Build and publish STAT 201 images
-on: workflow_dispatch
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "stat-201/r-stat-201-student/Dockerfile"
-  #     - "stat-201/r-stat-201-student/conda-linux-64.lock"
-  #     - "stat-201/r-stat-201-instructor/Dockerfile"
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - "stat-201/r-stat-201-student/Dockerfile"
+      - "stat-201/r-stat-201-student/conda-linux-64.lock"
+      - "stat-201/r-stat-201-instructor/Dockerfile"
         
 jobs:
     build-publish:
