@@ -6,6 +6,7 @@ channels:
 dependencies:
   - anyio=3.7.1
   - jupyterlab-git
+  - jupyter-resource-usage<1.0.0
   - jupytext
   - nbgitpuller
   - r-aer 
