@@ -50,6 +50,9 @@ COPY shortcuts.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/\
 # Copy jupyter_server_config.py which allows students to see and delete hidden files
 COPY jupyter_server_config.py /home/${NB_USER}/.jupyter
 
+# Copy gitconfig that sets default pull strategy to rebase
+COPY .gitconfig /home/${NB_USER}/
+
 # Make sure everything in the home folder is owned by NB_USER for running docker image locally.
 USER root
 RUN chown -R ${NB_USER} /home/${NB_USER}
