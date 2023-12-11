@@ -46,13 +46,13 @@ RUN pip install --ignore-installed git+https://github.com/pexpect/pexpect.git@ma
 RUN jupyter labextension disable @jupyterlab/cell-toolbar-extension
 
 # Configure shortcuts-extension to remove Shift-M cell merge shortcut
-COPY shortcuts.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
+COPY config/shortcuts.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
 
 # Copy jupyter_server_config.py which allows students to see and delete hidden files
-COPY jupyter_server_config.py /home/${NB_USER}/.jupyter
+COPY config/jupyter_server_config.py /home/${NB_USER}/.jupyter
 
 # Copy gitconfig that sets global default pull strategy to rebase
-COPY .gitconfig /home/${NB_USER}/
+COPY config/.gitconfig /home/${NB_USER}/
 
 # Make sure everything in the home folder is owned by NB_USER for running docker image locally.
 USER root
