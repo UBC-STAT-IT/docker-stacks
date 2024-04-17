@@ -17,8 +17,40 @@ ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 
 # Install R packages
 RUN mamba install --quiet --yes \
-    'r-cowplot' \
-    'r-ggally' \
+  'r-webshot' \
+  'r-truncnorm' \
+  'r-skewhyperbolic' \
+  'r-shinyjs' \
+  'r-sandwich' \
+  'r-runit' \
+  'r-rsolnp' \
+  'r-rgl' \
+  'r-pracma' \
+  'r-plot3d' \
+  'r-nloptr' \
+  'r-mvtnorm' \
+  'r-multicool' \
+  'r-misc3d' \
+  'r-mclust' \
+  'r-markdown' \
+  'r-manipulatewidget' \
+  'r-lazyeval' \
+  'r-kernlab' \
+  'r-generalizedhyperbolic' \
+  'r-formatr' \
+  'r-fnn' \
+  'r-feather' \
+  'r-estimability' \
+  'r-emmeans' \
+  'r-distributionutils' \
+  'r-bh' \
+  'r-dichromat' \
+  'r-crosstalk' \
+  'r-coda' \
+  'r-chron' \
+  'r-bh' \
+  'r-cowplot' \
+  'r-ggally' \
 	'r-gridextra' \
 	'r-infer' \
 	'r-kknn' \
@@ -30,6 +62,10 @@ RUN mamba install --quiet --yes \
     && fix-permissions "/home/${NB_USER}" \
     && Rscript -e "remotes::install_github('allisonhorst/palmerpenguins@v0.1.0')" \
     && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('clubSandwich', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('MonetDBLite', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('rugarch', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('spd', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('scales', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('tidyclust', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('janitor', repos='http://cran.us.r-project.org')"
