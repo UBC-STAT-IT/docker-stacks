@@ -89,6 +89,9 @@ COPY jupyter_server_config.py /home/${NB_USER}/.jupyter
 # Copy gitconfig that sets global default pull strategy to merge
 COPY .gitconfig /home/${NB_USER}/
 
+# Enable resource usage bar
+COPY topbar-item.jupyterlab-settings /home/jovyan/.jupyter/lab/user-settings/@jupyter-server/resource-usage/topbar-item.jupyterlab-settings
+
 # Make sure everything in the home folder is owned by NB_USER
 USER root
 RUN chown -R ${NB_USER} /home/${NB_USER}
