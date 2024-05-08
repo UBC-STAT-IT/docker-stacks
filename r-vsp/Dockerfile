@@ -16,27 +16,17 @@ WORKDIR "${HOME}/work"
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 
 # Install R packages
-RUN mamba install --quiet --yes \
-    'r-cowplot' \
-    'r-ggally' \
-	'r-gridextra' \
-	'r-infer' \
-	'r-kknn' \
-	'r-testthat' \
-	'r-rpostgres' \
-  'jupyter-resource-usage' \
-    && mamba clean --all -f -y \
-    && fix-permissions "${CONDA_DIR}" \
-    && fix-permissions "/home/${NB_USER}" \
-    && Rscript -e "remotes::install_github('allisonhorst/palmerpenguins@v0.1.0')" \
-    && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')" \
-    && Rscript -e "install.packages('scales', repos='http://cran.us.r-project.org')" \
-    && Rscript -e "install.packages('tidyclust', repos='http://cran.us.r-project.org')" \
-    && Rscript -e "install.packages('janitor', repos='http://cran.us.r-project.org')"
+COPY conda-linux-64.lock /tmp/conda-linux-64.lock
+
+# Install R packages
+RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
+  mamba clean --all -y -f && \
+  # fix-permissions "${CONDA_DIR}" && \
+  # fix-permissions "/home/${NB_USER}" && \
+  Rscript -e "install.packages('tidyclust', repos='http://cran.us.r-project.org')" 
 
 # Install nbgitpuller, jlab-git, newest pexpect 4.9.0
-RUN pip install nbgitpuller jupyterlab-git pexpect==4.9.0 \
-  && jupyter lab build  
+RUN pip install nbgitpuller jupyterlab-git pexpect==4.9.0
 
 # Disable the cell toolbar (which ignores metadata and students often accidentally click + delete grading cells)
 RUN jupyter labextension disable @jupyterlab/cell-toolbar-extension

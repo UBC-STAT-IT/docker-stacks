@@ -1,0 +1,19 @@
+name: r-dssg
+channels:
+  - conda-forge
+  - r 
+  - nodefaults
+dependencies:
+  - jupyter-resource-usage
+  - python=3.11
+  - r-cowplot
+  - r-ggally 
+  - r-gridextra 
+  - r-infer
+  - r-islr
+  - r-janitor
+  - r-kknn 
+  - r-lme4
+  - r-rpostgres
+  - r-scales
+  - r-testthat
