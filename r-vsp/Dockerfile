@@ -21,8 +21,8 @@ COPY conda-linux-64.lock /tmp/conda-linux-64.lock
 # Install R packages
 RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
   mamba clean --all -y -f && \
-  # fix-permissions "${CONDA_DIR}" && \
-  # fix-permissions "/home/${NB_USER}" && \
+  fix-permissions "${CONDA_DIR}" && \
+  fix-permissions "/home/${NB_USER}" && \
   Rscript -e "install.packages('tidyclust', repos='http://cran.us.r-project.org')" 
 
 # Install nbgitpuller, jlab-git, newest pexpect 4.9.0
