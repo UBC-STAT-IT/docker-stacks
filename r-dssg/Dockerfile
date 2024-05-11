@@ -4,6 +4,11 @@ FROM jupyter/r-notebook:lab-4.0.5
 
 USER root
 
+RUN groupadd -g 10002 dsi-dssg && \ 
+  groupadd -g 10003 asda1-4 && \ 
+  groupadd -g 10004 asda5-8 && \ 
+  usermod -G dsi-dssg,asda1-4,asda5-8 jovyan
+
 # install vim and libgsl (for tidyclust)
 RUN apt-get update && apt-get install -y vim libgsl27 libgsl-dev build-essential
 
