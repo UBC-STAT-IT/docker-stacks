@@ -5,7 +5,7 @@ FROM jupyter/r-notebook:lab-4.0.5
 USER root
 
 # install vim and libgsl (for tidyclust)
-RUN apt-get update && apt-get install -y vim libgsl27 libgsl-dev build-essential
+RUN apt-get update && apt-get install -y vim libgsl27 libgsl-dev libgl1 build-essential
 
 USER ${NB_UID}
 
@@ -23,7 +23,8 @@ RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
   mamba clean --all -y -f && \
   fix-permissions "${CONDA_DIR}" && \
   fix-permissions "/home/${NB_USER}" && \
-  Rscript -e "install.packages('tidyclust', repos='http://cran.us.r-project.org')" 
+  Rscript -e "install.packages('tidyclust', repos='http://cran.us.r-project.org')" && \
+  Rscript -e "install.packages('lmerTest', repos='http://cran.us.r-project.org')" 
 
 # Install nbgitpuller, jlab-git, newest pexpect 4.9.0
 RUN pip install nbgitpuller jupyterlab-git pexpect==4.9.0

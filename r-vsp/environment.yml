@@ -17,3 +17,16 @@ dependencies:
   - r-rpostgres
   - r-scales
   - r-testthat
+  - r-emmeans
+  - r-dharma
+  - r-rstatix
+  - r-ez
+  - r-mlbench
+  - r-factoextra
+  - r-gapminder
+  - r-cluster
+  - r-glmnet
+  - r-kableextra
+  - r-rgl
+  - r-mlmetrics
+  - r-dt
