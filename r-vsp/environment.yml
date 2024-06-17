@@ -6,6 +6,7 @@ channels:
 dependencies:
   - jupyter-resource-usage
   - python=3.11
+  - r-caret
   - r-cowplot
   - r-ggally 
   - r-gridextra 
