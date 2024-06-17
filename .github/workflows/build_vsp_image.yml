@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "r-vsp/Dockerfile"
+      - "r-vsp/conda-linux-64.lock"
         
 jobs:
     build-publish:

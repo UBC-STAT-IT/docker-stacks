@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "r-dssg/Dockerfile"
+      - "r-dssg/conda-linux-64.lock"
         
 jobs:
     build-publish:
