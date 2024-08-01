@@ -4,6 +4,10 @@ FROM jupyter/r-notebook:lab-4.0.5
 
 USER root
 
+COPY ./entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 RUN groupadd -g 10002 dsi-dssg && \ 
   groupadd -g 10003 asda1-4 && \ 
   groupadd -g 10004 asda5-8 && \ 
