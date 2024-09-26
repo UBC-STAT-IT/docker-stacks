@@ -4,8 +4,9 @@ on:
     branches:
       - main
     paths:
-      - "kcds/Dockerfile"
-      - "kcds/conda-linux-64.lock"
+      - "kcds-student/Dockerfile"
+      - "kcds-student/conda-linux-64.lock"
+      - "kcds-grading/Dockerfile"
         
 jobs:
     build-publish:
@@ -22,11 +23,20 @@ jobs:
           shell: bash
           run: echo "tag=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
 
-        - name: Build and publish VSP image
+        - name: Build and publish KCDS student image
           uses: elgohr/Publish-Docker-Github-Action@v5
           with:
-            name: ubcstatit/kcds
+            name: ubcstatit/kcds-student
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
-            workdir: "kcds"
+            workdir: "kcds-student"
+            tags: "latest,${{ steps.release.outputs.tag }}"
+
+        - name: Build and publish KCDS grading image
+          uses: elgohr/Publish-Docker-Github-Action@v5
+          with:
+            name: ubcstatit/kcds-grading
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
+            workdir: "kcds-grading"
             tags: "latest,${{ steps.release.outputs.tag }}"
