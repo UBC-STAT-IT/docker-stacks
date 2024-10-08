@@ -54,7 +54,7 @@ RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 COPY shortcuts.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
 
 # Enable resource usage bar
-COPY topbar-item.jupyterlab-settings /home/jovyan/.jupyter/lab/user-settings/@jupyter-server/resource-usage/topbar-item.jupyterlab-settings
+COPY topbar-item.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/@jupyter-server/resource-usage/topbar-item.jupyterlab-settings
 
 # Make sure everything in the home folder is owned by NB_USER
 USER root
