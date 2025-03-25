@@ -20,11 +20,5 @@ RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
 # Disable announcement pop-up on start
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 
-# Copy jupyter_server_config.py which allows students to see and delete hidden files
-COPY jupyter_server_config.py /home/${NB_USER}/.jupyter
-
-# Enable resource usage bar
-COPY topbar-item.jupyterlab-settings /home/jovyan/.jupyter/lab/user-settings/@jupyter-server/resource-usage/topbar-item.jupyterlab-settings
-
 # Disable healthcheck for performance reasons
 HEALTHCHECK NONE
