@@ -15,7 +15,7 @@ ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 COPY conda-linux-64.lock /tmp/conda-linux-64.lock
 
 RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
-	mamba clean --all -y -f && 
+	mamba clean --all -y -f
 
 # Disable announcement pop-up on start
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
