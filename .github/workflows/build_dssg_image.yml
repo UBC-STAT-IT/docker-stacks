@@ -4,8 +4,8 @@ on:
     branches:
       - main
     paths:
-      - "r-dssg/Dockerfile"
-      - "r-dssg/conda-linux-64.lock"
+      - "dssg/Dockerfile"
+      - "dssg/conda-linux-64.lock"
         
 jobs:
     build-publish:
@@ -25,8 +25,8 @@ jobs:
         - name: Build and publish DSSG image
           uses: elgohr/Publish-Docker-Github-Action@v5
           with:
-            name: ubcstatit/r-dssg
+            name: ubcstatit/dssg
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
-            workdir: "r-dssg"
+            workdir: "dssg"
             tags: "latest,${{ steps.release.outputs.tag }}"

@@ -1,0 +1,29 @@
+name: dssg
+channels:
+ - conda-forge
+ - r 
+ - nodefaults
+dependencies:
+ - jupyter-resource-usage
+ - jupyterlab-git
+ - python=3.11
+ - r-boot
+ - r-broom
+ - r-class
+ - r-cluster
+ - r-cowplot
+ - r-dbplyr
+ - r-forcats
+ - r-gridextra
+ - r-lattice
+ - r-latticeextra
+ - r-lubridate
+ - r-magick
+ - r-matrix
+ - r-modelr
+ - r-mvtnorm
+ - r-nlme
+ - r-rcppeigen
+ - r-readr
+ - r-tidyr
+ - r-tidyverse
