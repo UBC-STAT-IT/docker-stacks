@@ -20,5 +20,8 @@ RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
 # Disable announcement pop-up on start
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
 
+# Use custom start.sh
+COPY start.sh /usr/local/bin/start.sh
+
 # Disable healthcheck for performance reasons
 HEALTHCHECK NONE
