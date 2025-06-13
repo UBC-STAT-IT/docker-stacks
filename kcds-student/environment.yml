@@ -4,6 +4,7 @@ channels:
  - nodefaults
 dependencies:
  - altair-all=5.5.*
+ - jupyterlab-git
  - nbgitpuller
  - pandas=2.2.*
  - pytest
