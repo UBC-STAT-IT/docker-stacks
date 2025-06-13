@@ -4,6 +4,7 @@ channels:
  - nodefaults
 dependencies:
  - altair-all=5.5.*
+ - nbgitpuller
  - pandas=2.2.*
  - pytest
  - python=3.11
