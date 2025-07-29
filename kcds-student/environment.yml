@@ -5,6 +5,7 @@ channels:
 dependencies:
  - altair=5.5.*
  - jupyterlab-git
+ - jupyter-resource-usage
  - nbgitpuller
  - graphviz=13.1.1
  - matplotlib=3.10.3
