@@ -60,6 +60,9 @@ COPY topbar-item.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings
 # Copy jupyter_server_config.py which contains extra server config 
 COPY jupyter_server_config.py /home/${NB_USER}/.jupyter
 
+# Install config file that sets windowing mode to 'defer'
+COPY tracker.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings
+
 # Make sure everything in the home folder is owned by NB_USER
 USER root
 RUN chown -R ${NB_USER} /home/${NB_USER}
