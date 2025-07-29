@@ -3,11 +3,12 @@ channels:
  - conda-forge
  - nodefaults
 dependencies:
- - altair=5.5.*
+ - altair-all=5.5.*
  - jupyterlab-git
  - jupyter-resource-usage
  - nbgitpuller
  - graphviz=13.1.1
+ - python-graphviz
  - matplotlib=3.10.3
  - numpy=2.3.1
  - openpyxl=3.1.5
