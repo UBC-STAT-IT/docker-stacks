@@ -3,10 +3,20 @@ channels:
  - conda-forge
  - nodefaults
 dependencies:
- - altair-all=5.5.*
+ - altair=5.5.*
  - jupyterlab-git
  - nbgitpuller
+ - graphviz=13.1.1
+ - matplotlib=3.10.3
+ - numpy=2.3.1
+ - openpyxl=3.1.5
  - pandas=2.2.*
+ - python=3.12.*
+ - pytorch=2.7.1
  - pytest
- - python=3.11
- - vega_datasets=0.9.0
+ - scikit-learn=1.7.1
+ - scipy=1.16.0
+ - torchvision=0.22.0
+ - vega_datasets=0.9.*
+ - vl-convert-python=1.7.0
+ - xgboost=3.0.2

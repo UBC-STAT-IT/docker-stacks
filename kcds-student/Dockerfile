@@ -1,6 +1,6 @@
 # Copyright (c) UBC-DSCI Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM quay.io/jupyter/minimal-notebook:python-3.11
+FROM quay.io/jupyter/minimal-notebook:python-3.12
 
 LABEL maintainer="Brian Kim <brian.kim@stat.ubc.ca>"
 
