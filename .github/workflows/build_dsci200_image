@@ -1,0 +1,42 @@
+name: Build and publish DSCI 200 image
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - "r-dsci-200/Dockerfile"
+      - "r-dsci-200/conda-linux-64.lock"
+      - "r-dsci-200-grading/Dockerfile"
+        
+jobs:
+    build-publish:
+        runs-on: ubuntu-latest
+        
+        steps:
+        - name: Checkout main
+          uses: actions/checkout@v4
+          with:
+            ref: "main"
+
+        - name: Create release tag
+          id: release
+          shell: bash
+          run: echo "tag=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
+
+        - name: Build and publish DSCI 200 image
+          uses: elgohr/Publish-Docker-Github-Action@v5
+          with:
+            name: ubcdsci/r-dsci-200
+            username: ${{ secrets.DOCKER_USERNAME_PERSONAL }}
+            password: ${{ secrets.DOCKER_PASSWORD_PERSONAL }}
+            workdir: "r-dsci-200"
+            tags: "latest,${{ steps.release.outputs.tag }}"
+
+        - name: Build and publish DSCI 200 grading image
+          uses: elgohr/Publish-Docker-Github-Action@v5
+          with:
+            name: ubcdsci/r-dsci-200-grading
+            username: ${{ secrets.DOCKER_USERNAME_PERSONAL }}
+            password: ${{ secrets.DOCKER_PASSWORD_PERSONAL }}
+            workdir: "kcds-grading"
+            tags: "latest,${{ steps.release.outputs.tag }}"

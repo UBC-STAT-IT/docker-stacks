@@ -1,0 +1,26 @@
+name: r-dsci-200
+channels:
+  - conda-forge
+  - r 
+  - nodefaults
+dependencies:
+  - jupyter-resource-usage
+  - jupyterlab-git
+  - python=3.11
+  - r-tidyverse
+  - r-dplyr
+  - r-testthat
+  - r-rvest
+  - r-robotstxt
+  - r-jsonlite
+  - r-httr
+  - r-waffle
+  - r-corrr
+  - r-palmerpenguins
+  - r-gridextra
+  - r-tidymodels
+  - r-infer
+  - r-arrow
+  - r-stringr
+  - r-digest
+  - r-devtools

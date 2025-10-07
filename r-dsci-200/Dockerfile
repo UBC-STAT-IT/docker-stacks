@@ -1,0 +1,55 @@
+# Copyright (c) UBC-DSCI Development Team.
+# Distributed under the terms of the Modified BSD License.
+FROM jupyter/r-notebook:lab-4.0.5
+
+USER root
+
+# install vim and libgsl (for tidyclust)
+RUN apt-get update && apt-get install -y vim libgsl27 libgsl-dev libgl1 build-essential
+
+USER ${NB_UID}
+
+WORKDIR "${HOME}/work"
+
+# disable warnings that pollute build logs; seems to be related to the update to python 3.11
+# https://discourse.jupyter.org/t/debugger-warning-it-seems-that-frozen-modules-are-being-used-python-3-11-0/16544/12
+ENV PYDEVD_DISABLE_FILE_VALIDATION=1
+
+# Install R packages
+COPY conda-linux-64.lock /tmp/conda-linux-64.lock
+
+# Install R packages
+RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
+  mamba clean --all -y -f && \
+  fix-permissions "${CONDA_DIR}" && \
+  fix-permissions "/home/${NB_USER}" && \
+  Rscript -e "devtools::install_github('diverse-data-hub/diversedata')"
+
+# Install nbgitpuller, jlab-git, newest pexpect 4.9.0
+RUN pip install nbgitpuller jupyterlab-git pexpect==4.9.0
+
+# Disable the cell toolbar (which ignores metadata and students often accidentally click + delete grading cells)
+RUN jupyter labextension disable @jupyterlab/cell-toolbar-extension
+
+# Disable announcement pop-up on start
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
+
+# Install the extension to remove the shift+M merge shortcut
+COPY shortcuts.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
+
+# Copy jupyter_server_config.py which allows students to see and delete hidden files
+COPY jupyter_server_config.py /home/${NB_USER}/.jupyter
+
+# Install config file that sets windowing mode to 'defer'
+COPY tracker.jupyterlab-settings /home/${NB_USER}/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings
+
+# Enable resource usage bar
+COPY topbar-item.jupyterlab-settings /home/jovyan/.jupyter/lab/user-settings/@jupyter-server/resource-usage/topbar-item.jupyterlab-settings
+
+# Make sure everything in the home folder is owned by NB_USER
+USER root
+RUN chown -R ${NB_USER} /home/${NB_USER}
+USER ${NB_UID}
+
+# Disable healthcheck for performance reasons
+HEALTHCHECK NONE
