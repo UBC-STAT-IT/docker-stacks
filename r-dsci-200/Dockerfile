@@ -1,35 +1,48 @@
 # Copyright (c) UBC-DSCI Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM jupyter/r-notebook:lab-4.0.5
+FROM quay.io/jupyter/minimal-notebook:python-3.12
 
 USER root
 
-# install vim and libgsl (for tidyclust)
-RUN apt-get update && apt-get install -y vim libgsl27 libgsl-dev libgl1 build-essential
+# R pre-requisites
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    fonts-dejavu \
+    unixodbc \
+    unixodbc-dev \
+    vim \
+    libgsl27 \
+    libgsl-dev \
+    libgl1 \
+    build-essential \
+    r-cran-rodbc \
+    gfortran \
+    gcc && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN rm -rf "/home/${NB_USER}/.cache/"
 
 USER ${NB_UID}
 
 WORKDIR "${HOME}/work"
 
+# Install R packages
+COPY conda-linux-64.lock /tmp/conda-linux-64.lock
+
+# R packages including IRKernel which gets installed globally.
+# r-e1071: dependency of the caret R package
+RUN mamba install --yes --file /tmp/conda-linux-64.lock && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}" && \
+    Rscript -e "devtools::install_github('diverse-data-hub/diversedata')"
+
 # disable warnings that pollute build logs; seems to be related to the update to python 3.11
 # https://discourse.jupyter.org/t/debugger-warning-it-seems-that-frozen-modules-are-being-used-python-3-11-0/16544/12
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
 
-# Install R packages
-COPY conda-linux-64.lock /tmp/conda-linux-64.lock
-
-# Install R packages
-RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
-  mamba clean --all -y -f && \
-  fix-permissions "${CONDA_DIR}" && \
-  fix-permissions "/home/${NB_USER}" && \
-  Rscript -e "devtools::install_github('diverse-data-hub/diversedata')"
-
-# Install nbgitpuller, jlab-git, newest pexpect 4.9.0
-RUN pip install nbgitpuller jupyterlab-git pexpect==4.9.0
-
 # Disable the cell toolbar (which ignores metadata and students often accidentally click + delete grading cells)
-RUN jupyter labextension disable @jupyterlab/cell-toolbar-extension
+RUN jupyter labextension disable "@jupyterlab/cell-toolbar-extension"
 
 # Disable announcement pop-up on start
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"

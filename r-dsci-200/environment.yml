@@ -6,21 +6,43 @@ channels:
 dependencies:
   - jupyter-resource-usage
   - jupyterlab-git
-  - python=3.11
-  - r-tidyverse
-  - r-dplyr
-  - r-testthat
-  - r-rvest
-  - r-robotstxt
-  - r-jsonlite
-  - r-httr
-  - r-waffle
-  - r-corrr
-  - r-palmerpenguins
-  - r-gridextra
-  - r-tidymodels
-  - r-infer
+  - jupyterlab_rise
+  - nbgitpuller
+  - pexpect=4.9.0
+  - python=3.12.*
+  - pyzmq=27.0.2
   - r-arrow
-  - r-stringr
-  - r-digest
+  - r-base
+  - r-caret
+  - r-corrr
+  - r-crayon
   - r-devtools
+  - r-digest
+  - r-dplyr
+  - r-e1071
+  - r-forecast
+  - r-gridextra
+  - r-hexbin
+  - r-htmltools
+  - r-htmlwidgets
+  - r-httr
+  - r-infer
+  - r-irkernel
+  - r-jsonlite
+  - r-kknn
+  - r-nycflights13
+  - r-palmerpenguins
+  - r-randomforest
+  - r-rcurl
+  - r-rmarkdown
+  - r-robotstxt
+  - r-rodbc
+  - r-rsqlite
+  - r-rvest
+  - r-stringr
+  - r-testthat
+  - r-themis
+  - r-tidyverse
+  - r-tidymodels
+  - r-waffle
+  - unixodbc
