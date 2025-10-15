@@ -1,0 +1,36 @@
+name: r-dsci-200-pl
+channels:
+  - conda-forge
+  - r 
+  - nodefaults
+dependencies:
+  - r-arrow
+  - r-caret
+  - r-corrr
+  - r-crayon
+  - r-devtools
+  - r-dplyr
+  - r-e1071
+  - r-forecast
+  - r-gridextra
+  - r-hexbin
+  - r-htmltools
+  - r-htmlwidgets
+  - r-httr
+  - r-infer
+  - r-jsonlite
+  - r-kknn
+  - r-nycflights13
+  - r-palmerpenguins
+  - r-randomforest
+  - r-rcurl
+  - r-rmarkdown
+  - r-robotstxt
+  - r-rodbc
+  - r-rsqlite
+  - r-rvest
+  - r-stringr
+  - r-themis
+  - r-tidyverse
+  - r-tidymodels
+  - r-waffle
