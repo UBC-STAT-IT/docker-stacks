@@ -1,0 +1,31 @@
+name: Build and publish DSCI 200 PrairieLearn autograder image
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - "r-dsci-200-pl-autograder/Dockerfile"
+        
+jobs:
+    build-publish:
+        runs-on: ubuntu-latest
+        
+        steps:
+        - name: Checkout main
+          uses: actions/checkout@v4
+          with:
+            ref: "main"
+
+        - name: Create release tag
+          id: release
+          shell: bash
+          run: echo "tag=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
+
+        - name: Build and publish DSCI 200 image
+          uses: elgohr/Publish-Docker-Github-Action@v5
+          with:
+            name: ubcdsci/r-dsci-200-pl-autograder
+            username: ${{ secrets.DOCKER_USERNAME_PERSONAL }}
+            password: ${{ secrets.DOCKER_PASSWORD_PERSONAL }}
+            workdir: "r-dsci-200-pl-autograder"
+            tags: "latest,${{ steps.release.outputs.tag }}"
