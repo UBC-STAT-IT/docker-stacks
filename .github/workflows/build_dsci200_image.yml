@@ -38,5 +38,5 @@ jobs:
             name: ubcdsci/r-dsci-200-grading
             username: ${{ secrets.DOCKER_USERNAME_PERSONAL }}
             password: ${{ secrets.DOCKER_PASSWORD_PERSONAL }}
-            workdir: "kcds-grading"
+            workdir: "r-dsci-200-grading"
             tags: "latest,${{ steps.release.outputs.tag }}"
