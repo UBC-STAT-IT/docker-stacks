@@ -10,5 +10,8 @@ RUN Rscript --no-save install.R arrow caret corrr \
                     rmarkdown robotstxt RODBC \
                     RSQlite rvest stringr \
                     themis tidyverse tidymodels \
-                    htmlwidgets httr infer waffle
+                    htmlwidgets httr infer waffle \
+                    naniar simputation mice MLmetrics \
+                    visdat DMwR2 tibble cellWise \
+                    matrixStats VIM Hmisc
 
