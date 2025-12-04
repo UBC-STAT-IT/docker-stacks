@@ -13,5 +13,5 @@ RUN Rscript --no-save install.R arrow caret corrr \
                     htmlwidgets httr infer waffle \
                     naniar simputation mice MLmetrics \
                     visdat DMwR2 tibble cellWise \
-                    matrixStats VIM Hmisc
+                    matrixStats VIM Hmisc 
 
