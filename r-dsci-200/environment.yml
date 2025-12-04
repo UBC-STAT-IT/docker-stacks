@@ -18,11 +18,13 @@ dependencies:
   - r-crayon
   - r-devtools
   - r-digest
+  - r-dmwr2
   - r-dplyr
   - r-e1071
   - r-forecast
   - r-gridextra
   - r-hexbin
+  - r-hmisc
   - r-htmltools
   - r-htmlwidgets
   - r-httr
@@ -30,6 +32,10 @@ dependencies:
   - r-irkernel
   - r-jsonlite
   - r-kknn
+  - r-matrixstats
+  - r-mice
+  - r-mlmetrics
+  - r-naniar
   - r-nycflights13
   - r-palmerpenguins
   - r-randomforest
@@ -42,7 +48,10 @@ dependencies:
   - r-stringr
   - r-testthat
   - r-themis
-  - r-tidyverse
+  - r-tibble
   - r-tidymodels
+  - r-tidyverse
+  - r-vim
+  - r-visdat
   - r-waffle
   - unixodbc
