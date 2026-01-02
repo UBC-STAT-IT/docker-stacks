@@ -13,4 +13,6 @@ RUN Rscript -e "lib <- 'simputation'; install.packages(lib, repos='http://cran.u
 
 RUN Rscript -e "lib <- 'cellWise'; install.packages(lib, repos='http://cran.us.r-project.org'); if ( ! library(lib,character.only=TRUE,logical.return=TRUE)){quit(status=1,save='no')}"
 
+RUN Rscript -e "lib <- 'NHANES'; install.packages(lib, repos='http://cran.us.r-project.org'); if ( ! library(lib,character.only=TRUE,logical.return=TRUE)){quit(status=1,save='no')}"
+
 USER ${NB_UID}
