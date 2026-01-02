@@ -41,6 +41,8 @@ RUN Rscript -e "lib <- 'simputation'; install.packages(lib, repos='http://cran.u
 
 RUN Rscript -e "lib <- 'cellWise'; install.packages(lib, repos='http://cran.us.r-project.org'); if ( ! library(lib,character.only=TRUE,logical.return=TRUE)){quit(status=1,save='no')}"
 
+RUN Rscript -e "lib <- 'NHANES'; install.packages(lib, repos='http://cran.us.r-project.org'); if ( ! library(lib,character.only=TRUE,logical.return=TRUE)){quit(status=1,save='no')}"
+
 # disable warnings that pollute build logs; seems to be related to the update to python 3.11
 # https://discourse.jupyter.org/t/debugger-warning-it-seems-that-frozen-modules-are-being-used-python-3-11-0/16544/12
 ENV PYDEVD_DISABLE_FILE_VALIDATION=1
