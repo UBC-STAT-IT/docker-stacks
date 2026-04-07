@@ -5,7 +5,7 @@ ADD install.R /
 RUN Rscript --no-save install.R arrow caret corrr \
                     crayon forecast hexbin \
                     dplyr e1071 htmltools \
-                    jsonlite kknn nycflights13 \
+                    jsonlite kknn nycflights13 RobStatTM robustbase \
                     palmerpenguins randomForest RCurl \
                     rmarkdown robotstxt RODBC \
                     RSQlite rvest stringr \
