@@ -42,6 +42,8 @@ dependencies:
   - r-rcurl
   - r-rmarkdown
   - r-robotstxt
+  - r-robstattm
+  - r-robustbase
   - r-rodbc
   - r-rsqlite
   - r-rvest
