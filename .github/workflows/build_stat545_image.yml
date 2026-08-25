@@ -1,0 +1,42 @@
+name: Build and publish STAT 545 image
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - "r-stat-545/Dockerfile"
+      - "r-stat-545/conda-linux-64.lock"
+      - "r-stat-545-grading/Dockerfile"
+        
+jobs:
+    build-publish:
+        runs-on: ubuntu-latest
+        
+        steps:
+        - name: Checkout main
+          uses: actions/checkout@v4
+          with:
+            ref: "main"
+
+        - name: Create release tag
+          id: release
+          shell: bash
+          run: echo "tag=$(git rev-parse --short=6 HEAD)" >> $GITHUB_OUTPUT
+
+        - name: Build and publish STAT 545 image
+          uses: elgohr/Publish-Docker-Github-Action@v5
+          with:
+            name: ubcstatit/r-stat-545
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
+            workdir: "r-stat-545"
+            tags: "latest,${{ steps.release.outputs.tag }}"
+
+        - name: Build and publish DSCI 200 grading image
+          uses: elgohr/Publish-Docker-Github-Action@v5
+          with:
+            name: ubcstatit/r-stat-545-grading
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
+            workdir: "r-stat-545-grading"
+            tags: "latest,${{ steps.release.outputs.tag }}"

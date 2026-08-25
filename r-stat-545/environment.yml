@@ -1,0 +1,31 @@
+name: r-stat-545
+channels:
+ - conda-forge
+ - r
+ - nodefaults
+dependencies:
+ - jupyter-resource-usage
+ - jupyterlab-git
+ - nbgitpuller
+ - pexpect=4.9.0
+ - python=3.12.*
+ - pyzmq=27.0.2
+ - r-broom
+ - r-devtools
+ - r-digest
+ - r-dplyr
+ - r-forcats
+ - r-gapminder
+ - r-ggplot2
+ - r-ggridges
+ - r-glue
+ - r-here
+ - r-lubridate
+ - r-irkernel
+ - r-palmerpenguins
+ - r-reprex
+ - r-scales
+ - r-testthat
+ - r-tibble
+ - r-tidyr
+ - r-tsibble
