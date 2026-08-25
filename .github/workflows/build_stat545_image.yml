@@ -32,7 +32,7 @@ jobs:
             workdir: "r-stat-545"
             tags: "latest,${{ steps.release.outputs.tag }}"
 
-        - name: Build and publish DSCI 200 grading image
+        - name: Build and publish STAT 545 grading image
           uses: elgohr/Publish-Docker-Github-Action@v5
           with:
             name: ubcstatit/r-stat-545-grading

@@ -1,6 +1,6 @@
 # Copyright (c) UBC-DSCI Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM ubcdsci/r-stat-545:latest
+FROM ubcstatit/r-stat-545:latest
 
 # Install nbgrader
 RUN mamba install nbgrader
