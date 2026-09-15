@@ -19,6 +19,7 @@ dependencies:
  - r-ggplot2
  - r-ggridges
  - r-glue
+ - r-haven
  - r-here
  - r-lubridate
  - r-irkernel
@@ -26,6 +27,7 @@ dependencies:
  - r-reprex
  - r-scales
  - r-testthat
+ - r-tidyverse
  - r-tibble
  - r-tidyr
  - r-tsibble
